@@ -4,3 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Or with jQuery
+
+  
+document.addEventListener('DOMContentLoaded', function() {
+  var generateCocktailButton = document.querySelector('.modal-trigger');
+  
+
+  generateCocktailButton.addEventListener('click', function() {
+      console.log('Generating cocktail...');
+  });
+});
