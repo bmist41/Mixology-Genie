@@ -17,12 +17,20 @@ try {
 	const response = await fetch(url, options);
 	const result = await response.json();
 	console.log(result);
+  //generate random index 
+  let randomIndex = Math.floor(Math.random() * result.length);
+  //check to see if the index is 18, if it is get another random index
+  while (randomIndex === 18) {
+    randomIndex = Math.floor(Math.random() * result.length);
+  }
+  //set randomDrink to the result with the randomIndex
+  const randomDrink = result[randomIndex];
 
   const drinkTitleEl = document.createElement('h2');
   const drinkImageEl = document.createElement('img');
-
-  drinkTitleEl.textContent = result[0].title;
-  drinkImageEl.src = `https://apipics.s3.amazonaws.com/coctails_api/${result[0].id}.jpg`;
+  //this will use the random index to get the title and image to append to the DOM
+  drinkTitleEl.textContent = randomDrink.title;
+  drinkImageEl.src = `https://apipics.s3.amazonaws.com/coctails_api/${randomDrink.id}.jpg`;
 
   containerEl.append(drinkTitleEl);
   containerEl.append(drinkImageEl);
@@ -31,6 +39,7 @@ try {
 	console.error(error);
 }}
 getRandomDrink();
+
 //function renderResult
 
 //pass the id through the apiURL
