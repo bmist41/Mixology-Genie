@@ -1,5 +1,6 @@
 const containerEl = document.querySelector('#container');
 const generateRandomDrinkButton = document.querySelector('#random-drink-button');
+const showMeHowButton = document.querySelector('#show-me-how-button');
 
 const url = 'https://the-cocktail-db3.p.rapidapi.com/';
 const options = {
@@ -38,6 +39,11 @@ try {
   drinkTitleEl.textContent = randomDrink.title;
   drinkImageEl.src = `https://apipics.s3.amazonaws.com/coctails_api/${randomDrink.id}.jpg`;
 
+  drinkImageEl.style.maxWidth = '100%';
+  drinkImageEl.style.maxHeight = '100%';
+  drinkImageEl.style.width = 'auto';
+  drinkImageEl.style.height = 'auto';
+  
   containerEl.append(drinkTitleEl);
   containerEl.append(drinkImageEl);
 
@@ -45,6 +51,7 @@ try {
 
   localStorage.setItem('drinkNames', JSON.stringify(drinkNames));
 
+  showMeHowButton.style.display = 'inline-block';
 } catch (error) {
 	console.error(error);
 }}
@@ -85,3 +92,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //clicking on generate random drink will call the getRandomDrink function
 generateRandomDrinkButton.addEventListener('click', getRandomDrink);
+
