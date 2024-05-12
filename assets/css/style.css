@@ -1,12 +1,37 @@
 
 header {
     text-align: center;
-    margin-bottom: 20px;
+    font-family: cursive;
+    margin: auto;
+    background: rgb(255,87,34);
+    background: linear-gradient(0deg, rgba(255,87,34,1) 1%, rgba(34,193,195,1) 50%);
+}
+
+h1 {
+    margin: auto;
+    margin-bottom: 10px;
+    line-height: 100px;
+}
+
+h2 {
+    text-shadow: grey;
+    font-size: 40px;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
 }
 
 #show-me-how-button {
     display:none;
 }
+
+.dancing-script-header {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: bold;
+  }
 
 .container {
     max-width: 800px;
