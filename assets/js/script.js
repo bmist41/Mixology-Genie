@@ -1,6 +1,17 @@
+let currentDrinkName = '';
 const containerEl = document.querySelector('#container');
 const generateRandomDrinkButton = document.querySelector('#random-drink-button');
 const showMeHowButton = document.querySelector('#show-me-how-button');
+showMeHowButton.addEventListener('click', function(event) {
+  // Prevent the default action (modal triggering)
+  event.preventDefault();
+const searchedDrink = localStorage.getItem("currentDrink")
+  // Execute the function before displaying the modal
+   searchYouTube(searchedDrink);
+  
+  // Allow the modal to be shown by triggering the modal manually
+  // $('#exampleModal').modal('show');
+});
 
 const url = 'https://the-cocktail-db3.p.rapidapi.com/';
 const options = {
@@ -13,6 +24,69 @@ const options = {
 let response = null;
 
 let drinkNames = []
+
+//Adding api information for YouTube search
+
+// const urlSearch = 'https://youtube138.p.rapidapi.com/search/q=cosmopo?litan%20recipe&hl=en&gl=US';
+// const optionsSearch = {
+//   method: 'GET', 
+//   headers: {
+//     'X-RapidAPI-Key': '54be3dccb2msh451aa41638491b3p1839bcjsnb41828dbc0fd',
+//     'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
+//   }
+// };
+
+function createSearchUrl(query) {
+  const drinkRecipe = `recipe for ${query}`
+  const baseUrl = 'https://youtube138.p.rapidapi.com/search/';
+  const url = `${baseUrl}?q=${encodeURIComponent(drinkRecipe)}&hl=en&gl=US`;
+
+  const optionsSearch = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '54be3dccb2msh451aa41638491b3p1839bcjsnb41828dbc0fd',
+      'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
+    }
+  };
+
+  return { url, optionsSearch };
+}
+
+async function searchYouTube(searchValue) {  
+  console.log("search value", searchValue)
+  const { url, optionsSearch } = createSearchUrl(searchValue);
+  
+  try {
+    const response = await fetch(url, optionsSearch);
+    const data = await response.json();
+    displayResults(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+function displayResults(data) {
+  const resultsDiv = document.getElementById('videolink');
+      resultsDiv.innerHTML = '';
+console.log(data) 
+      if (data.contents && data.contents.length > 0) {
+        const video = data.contents[0].video;
+        console.log(video)
+        if (video) {
+          const videoElement = document.createElement('div');
+          videoElement.innerHTML = `
+            <h3>${video.title}</h3>
+            <p>${video.descriptionSnippet}</p>
+            <a href="https://www.youtube.com/watch?v=${video.videoId}" target="_blank">Watch</a>
+          `;
+          resultsDiv.appendChild(videoElement);
+        } else {
+          resultsDiv.innerHTML = 'No video found';
+        }
+      } else {
+        resultsDiv.innerHTML = 'No results found';
+      }
+}
 
 //store id in here
 async function getRandomDrink() {
@@ -50,11 +124,34 @@ try {
   drinkNames.push({drinkName: randomDrink.title});
 
   localStorage.setItem('drinkNames', JSON.stringify(drinkNames));
-
+  localStorage.setItem("currentDrink", JSON.stringify(randomDrink.title))
+  
+  currentDrinkName = 
   showMeHowButton.style.display = 'inline-block';
 } catch (error) {
 	console.error(error);
 }}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const generateCocktailButton = document.querySelector('.modal-trigger');
+  
+
+//   generateCocktailButton.addEventListener('click', function() {
+//       console.log('Generating cocktail...');
+//       searchYouTube();
+//   });
+// });
+
+
+//clicking on generate random drink will call the getRandomDrink function
+generateRandomDrinkButton.addEventListener('click', getRandomDrink);
 
 //function renderResult
 
@@ -73,23 +170,3 @@ try {
 // renderDrinkId();
 
 //activate modal
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems);
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const generateCocktailButton = document.querySelector('.modal-trigger');
-  
-
-  generateCocktailButton.addEventListener('click', function() {
-      console.log('Generating cocktail...');
-  });
-});
-
-
-//clicking on generate random drink will call the getRandomDrink function
-generateRandomDrinkButton.addEventListener('click', getRandomDrink);
-

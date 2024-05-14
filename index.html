@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Mixology Genie</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-
+  <body>
     <!-- Header -->
     <header class="dancing-script-header">
-        <h1>Mixology Genie</h1>
+      <h1>Mixology Genie</h1>
     </header>
 
-    <div class="container"> 
-        <!-- Generate Random Cocktail Button -->
-        <a class="waves-effect waves-light btn col s6 " id="random-drink-button">Generate Random Cocktail</a>
-         <!-- Modal Trigger Button-->
-        <a class="waves-effect waves-light btn modal-trigger col s6 deep-orange lighten-1" href="#modal1" id="show-me-how-button" >Show Me How To Make It</a>
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer">
-            <div class="modal-content">
-                <h2>Video Tutorial</h2>
-                <div class="video">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            </div>
+    <div class="container">
+      <!-- Generate Random Cocktail Button -->
+      <a class="waves-effect waves-light btn col s6" id="random-drink-button"
+        >Generate Random Cocktail</a
+      >
+      <!-- Modal Trigger Button-->
+      <a
+        class="waves-effect waves-light btn modal-trigger col s6 deep-orange lighten-1"
+        href="#modal1"
+        id="show-me-how-button"
+        >Show Me How To Make It</a
+      >
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h2>Video Tutorial</h2>
+          <div class="video">
+            <div id="videolink"></div>
+          </div>
         </div>
-
-        <div class="container" id="container">
-            <div class="recipe">
-
-            </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-red btn-flat"
+            >Cancel</a
+          >
         </div>
+      </div>
+
+      <div class="container" id="container">
+        <div class="recipe"></div>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
-
+  </body>
 </html>
