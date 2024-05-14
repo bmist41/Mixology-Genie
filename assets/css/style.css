@@ -26,9 +26,6 @@ h2 {
     display:none;
 }
 
-.container div {
-    border-width: 0;
-}
 
 .dancing-script-header {
     font-family: "Dancing Script", cursive;
@@ -61,6 +58,5 @@ h2 {
 .recipe,
 .video {
     margin-top: 20px;
-    border: 1px solid #ccc;
     padding: 10px;
 }
