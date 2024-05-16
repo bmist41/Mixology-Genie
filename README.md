@@ -4,7 +4,7 @@
 This is an app where users can generate random cocktails. When cocktails are generated then users are able to decide if they'd like to learn to make the cocktail or choose a different drink.
 
 ## Installation
-To acsess the webage you can click on the following link in the deployed application. load it on a new web browser tag. 
+To acsess the webage you can click on the following link in the deployed application. Load it on a new web browser tag. 
 
 
 
