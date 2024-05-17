@@ -17,7 +17,7 @@ This was a collaborated effort with Barrett Mistele, Hunter Thompson, Urie Willi
 
 ## License
 
-Please refer to the LICENSE in the repo
+Please refer to the LICENSE in the repo.
 
 ## Deployed Application
 https://bmist41.github.io/Mixology-Genie/

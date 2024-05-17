@@ -10,7 +10,6 @@ const searchedDrink = localStorage.getItem("currentDrink")
    searchYouTube(searchedDrink);
   
   // Allow the modal to be shown by triggering the modal manually
-  // $('#exampleModal').modal('show');
 });
 
 const url = 'https://the-cocktail-db3.p.rapidapi.com/';
@@ -26,15 +25,6 @@ let response = null;
 let drinkNames = []
 
 //Adding api information for YouTube search
-
-// const urlSearch = 'https://youtube138.p.rapidapi.com/search/q=cosmopo?litan%20recipe&hl=en&gl=US';
-// const optionsSearch = {
-//   method: 'GET', 
-//   headers: {
-//     'X-RapidAPI-Key': '54be3dccb2msh451aa41638491b3p1839bcjsnb41828dbc0fd',
-//     'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
-//   }
-// };
 
 function createSearchUrl(query) {
   const drinkRecipe = `recipe for ${query}`
@@ -139,34 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   const generateCocktailButton = document.querySelector('.modal-trigger');
-  
-
-//   generateCocktailButton.addEventListener('click', function() {
-//       console.log('Generating cocktail...');
-//       searchYouTube();
-//   });
-// });
-
-
 //clicking on generate random drink will call the getRandomDrink function
 generateRandomDrinkButton.addEventListener('click', getRandomDrink);
 
 //function renderResult
-
-//pass the id through the apiURL
-//if extra time we can add the recipe from a second api call on the cocktail db api
-// async function renderDrinkId (id) {
-//   try {
-//     const response = await fetch(`https://the-cocktail-db3.p.rapidapi.com/1`, options);
-//     const result = await response.text();
-//     console.log(result);
-//     //response = result;
-//     //invoke function to render result
-//   } catch (error) {
-//     console.error(error);
-//   }}
-// renderDrinkId();
-
-//activate modal
